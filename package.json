@@ -1,0 +1,20 @@
+{
+  "name": "jap-backend-grupo-6",
+  "version": "0.1.0",
+  "description": "Backend de Proyecto JAP Grupo 6 para la entrega 8",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "bcryptjs": "3.0.3",
+    "cors": "2.8.5",
+    "dotenv": "17.2.3",
+    "express": "5.1.0",
+    "jose": "6.1.2",
+    "mariadb": "3.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "3.1.11"
+  }
+}
