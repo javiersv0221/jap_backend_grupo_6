@@ -38,4 +38,35 @@ async function createUser(userData) {
     return await executeQuery(query, values);
 }
 
-module.exports = { findAllUsers, createUser, loginUser };
+async function findUserById(userId) {
+    const query = `
+        SELECT 
+            u.id_user, 
+            u.username, 
+            u.name, 
+            u.last_name, 
+            u.email, 
+            i.url as avatar
+        FROM Users u
+        LEFT JOIN Images i ON u.id_image = i.id_image
+        WHERE u.id_user = ?
+    `;
+
+    const results = await executeQuery(query, [userId]);
+
+    if (results.length === 0) return null;
+
+    const user = results[0];
+
+    return {
+        id: user.id_user,
+        username: user.username,
+        password: "",
+        name: user.name,
+        lastName: user.last_name,
+        email: user.email,
+        avatar: user.avatar || "img/avatars/avatar0.png"
+    };
+}
+
+module.exports = { findAllUsers, createUser, loginUser, findUserById };

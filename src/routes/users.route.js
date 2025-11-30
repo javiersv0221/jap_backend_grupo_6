@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const userService = require('../services/user.service');
 const { SignJWT } = require("jose");
-const { SECRET_KEY } = require("../middleware");
+const { SECRET_KEY, authenticateToken} = require("../middleware");
 const { validateFields } = require('../utils/validations');
 
 router.post('/login', async (req, res, next) => {
@@ -52,6 +52,22 @@ router.get('/', async (req, res, next) => {
     try {
         const users = await userService.findAllUsers();
         res.json(users);
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.get('/self', authenticateToken, async (req, res, next) => {
+    try {
+        const user = await userService.findUserById(req.user.id);
+
+        if (!user) {
+            const err = new Error("Usuario no encontrado");
+            err.httpStatus = 404;
+            throw err;
+        }
+
+        res.json(user);
     } catch (error) {
         next(error);
     }
