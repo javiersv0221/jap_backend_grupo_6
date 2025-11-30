@@ -15,6 +15,7 @@ CREATE TABLE Users (
     name VARCHAR(40) NOT NULL,
     last_name VARCHAR(40) NOT NULL,
     email VARCHAR(255) NOT NULL,
+    phone VARCHAR(10),
     password VARCHAR(255) NOT NULL,
     id_image BIGINT,
     CONSTRAINT uk_users_username UNIQUE (username),
