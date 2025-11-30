@@ -14,9 +14,8 @@ router.post('/login', async (req, res, next) => {
         const user = await userService.loginUser(username, password);
 
         if (!user) {
-            const err = new Error("Auth fallida");
+            const err = new Error("Credenciales inválidas (usuario o contraseña incorrectos)");
             err.httpStatus = 401;
-            err.messageForUser = "Credenciales inválidas (usuario o contraseña incorrectos)";
             throw err;
         }
 

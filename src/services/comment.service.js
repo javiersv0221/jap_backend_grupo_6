@@ -2,7 +2,12 @@ const { executeQuery } = require('../db');
 
 async function getCommentsByProduct(productId) {
     const query = `
-        SELECT c.id_comment, c.description, c.score, c.dateTime, u.username
+        SELECT
+            c.id_product AS product,
+            c.score,
+            c.description,
+            u.username AS user,
+            c.dateTime
         FROM Comments c
                  JOIN Users u ON c.id_user = u.id_user
         WHERE c.id_product = ?

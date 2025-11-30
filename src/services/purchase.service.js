@@ -12,9 +12,8 @@ async function createPurchase(userId, purchaseData) {
 
         const cartItems = await conn.query("SELECT * FROM Carts_Items WHERE id_user = ?", [userId]);
         if (cartItems.length === 0) {
-            const err = new Error("Carrito vacío");
+            const err = new Error("No puedes comprar con el carrito vacío.");
             err.httpStatus = 400;
-            err.messageForUser = "No puedes comprar con el carrito vacío.";
             throw err;
         }
 

@@ -17,7 +17,6 @@ router.get('/:id', async (req, res, next) => {
         if (!product) {
             const err = new Error("No encontrado");
             err.httpStatus = 404;
-            err.messageForUser = "Producto no encontrado";
             throw err;
         }
         res.json(product);

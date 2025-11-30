@@ -2,13 +2,24 @@ const { executeQuery } = require('../db');
 
 async function getCartByUser(userId) {
     const query = `
-        SELECT ci.id_cart_item, ci.amount, p.name, p.cost, p.currency, p.id_product,
-               (SELECT url FROM Images i JOIN Products_Images pi ON i.id_image = pi.id_image WHERE pi.id_product = p.id_product LIMIT 1) as image
+        SELECT
+            ci.id_product as id,
+            p.name,
+            ci.amount as count,
+            p.cost as unitCost,
+            p.currency,
+            (SELECT url FROM Images i JOIN Products_Images pi ON i.id_image = pi.id_image WHERE pi.id_product = p.id_product LIMIT 1) as image
         FROM Carts_Items ci
                  JOIN Products p ON ci.id_product = p.id_product
         WHERE ci.id_user = ?
     `;
-    return await executeQuery(query, [userId]);
+
+    const articles = await executeQuery(query, [userId]);
+
+    return {
+        user: userId,
+        articles: articles
+    };
 }
 
 async function addToCart(userId, productId, amount) {
@@ -34,7 +45,6 @@ async function updateCartItem(cartItemId, userId, newAmount) {
     if (result.affectedRows === 0) {
         const err = new Error("Item no encontrado");
         err.httpStatus = 404;
-        err.messageForUser = "El producto no está en tu carrito";
         throw err;
     }
     return result;
