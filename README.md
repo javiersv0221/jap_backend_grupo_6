@@ -6,10 +6,12 @@ Es una API RESTful construida con Node.js y Express que gestiona la lógica de n
 ## 👥 Equipo de Desarrollo
 **Grupo: 314 | Subgrupo: 6**
 
-* **[Javier Salvatierra (@javiersv0221)](https://github.com/javiersv0221)**
-* **[Jonathan Gomez (@devJonathanGomez)](https://github.com/devJonathanGomez)**
-* **[Verónica Alvez (@VeronicaAlvez)](https://github.com/VeronicaAlvez)**
-* **[Leandro Chevalier (@leeachevalier)](https://github.com/leeachevalier)**
+| Integrante | GitHub |
+| :--- | :--- |
+| **Javier Salvatierra** | [@javiersv0221](https://github.com/javiersv0221) |
+| **Jonathan Gomez** | [@devJonathanGomez](https://github.com/devJonathanGomez) |
+| **Verónica Alvez** | [@VeronicaAlvez](https://github.com/VeronicaAlvez) |
+| **Leandro Chevalier** | [@leeachevalier](https://github.com/leeachevalier) |
 
 ---
 
