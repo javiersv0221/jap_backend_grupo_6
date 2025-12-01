@@ -85,3 +85,8 @@ La API define las siguientes rutas base:
 | `/categories` | Listado de categorías disponibles | No |
 | `/purchases` | Historial de compras y finalizar compra | Sí |
 | `/comments` | Ver y publicar comentarios en productos | Parcial |
+
+## 🔗 Enlaces Relacionados
+
+* **Frontend del Proyecto:** [Ir al repositorio Frontend (jap_proyecto_final_grupo6)](https://github.com/javiersv0221/jap_proyecto_final_grupo6)
+    * *Desde aquí se consume esta API.*
